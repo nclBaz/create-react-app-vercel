@@ -9,7 +9,6 @@ function App() {
       const apiUrl = process.env.REACT_APP_BE_URL
       const resp = await fetch(`${apiUrl}/books`)
       const data = await resp.json()
-      console.log(data)
       setBooks(data.booksArray)
     }
     fetchData()
@@ -19,9 +18,19 @@ function App() {
       <header className="App-header">
         <h1>Books in the catalogue</h1>
         {books.map((book, index) => (
-          <div key={index}>
-            <img alt="" src={book.img} style={{ width: "200px" }}></img>
-            <span>{book.title}</span>
+          <div class="card">
+            <img class="card-image" src={book.img} alt={book.title} />
+            <div class="card-body">
+              <h2 class="text-truncate">${book.title}</h2>
+              <p class="song">
+                <span class="list text-truncate">
+                  <b>Title:</b> {book.title}
+                </span>
+              </p>
+              <p class="time">
+                Price: <span class="badge">${book.price}</span>
+              </p>
+            </div>
           </div>
         ))}
       </header>
