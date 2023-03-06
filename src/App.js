@@ -9,7 +9,7 @@ function App() {
       const apiUrl = process.env.REACT_APP_BE_URL
       const resp = await fetch(`${apiUrl}/books`)
       const data = await resp.json()
-      setBooks(data.booksArray)
+      setBooks(data)
     }
     fetchData()
   }, [])
